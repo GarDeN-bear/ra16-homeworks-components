@@ -2,7 +2,7 @@ import {render, screen} from '@testing-library/react';
 
 import ShopItemFunc from './ShopItemFunc';
 
-test('renders learn react link', () => {
+test('ShopItemFunc test', () => {
   const item = {
     brand: 'Tiger of Sweden',
     title: 'Leonard coat',

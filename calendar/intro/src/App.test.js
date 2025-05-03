@@ -4,5 +4,5 @@ import App from './App';
 
 test('App test', () => {
   render(<App />);
-  expect(screen.getByText(/Tiger of Sweden/)).toBeInTheDocument();
+  expect(screen.getByText(/Пн/)).toBeInTheDocument();
 });
