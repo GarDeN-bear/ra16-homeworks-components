@@ -1,20 +1,18 @@
-import {render, screen} from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
 
-import ShopItemFunc from './ShopItemFunc';
+import ShopItemFunc from "./ShopItemFunc";
 
-test('ShopItemFunc test', () => {
+test("ShopItemFunc test", () => {
   const item = {
-    brand: 'Tiger of Sweden',
-    title: 'Leonard coat',
-    description: 'Minimalistic coat in cotton-blend',
+    brand: "Tiger of Sweden",
+    title: "Leonard coat",
+    description: "Minimalistic coat in cotton-blend",
     descriptionFull:
-        'Men\'s minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.',
+      "Men's minimalistic overcoat in cotton-blend. Features a stand-up collar, concealed front closure and single back vent. Slim fit with clean, straight shape. Above-knee length.",
     price: 399,
-    currency: '£'
+    currency: "£",
   };
 
-  render(< ShopItemFunc item = {
-    item
-  } />);
+  render(<ShopItemFunc item={item} />);
   expect(screen.getByText(/Tiger of Sweden/)).toBeInTheDocument();
 });
