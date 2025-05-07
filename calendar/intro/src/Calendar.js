@@ -4,15 +4,17 @@ import React from "react";
 
 const Calendar = ({ date }) => {
   const daysOfWeek = [
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-    "Воскресенье",
+    ["Понедельник", "Пн"],
+    ["Вторник", "Вт"],
+    ["Среда", "Ср"],
+    ["Четверг", "Чт"],
+    ["Пятница", "Пт"],
+    ["Суббота", "Сб"],
+    ["Воскресенье", "Вс"],
   ];
+
   const months = [
+    "Декабря",
     "Января",
     "Февраля",
     "Марта",
@@ -24,9 +26,10 @@ const Calendar = ({ date }) => {
     "Сентября",
     "Октября",
     "Ноября",
-    "Декабря",
   ];
+
   const monthNames = [
+    "Декабрь",
     "Январь",
     "Февраль",
     "Март",
@@ -38,12 +41,11 @@ const Calendar = ({ date }) => {
     "Сентябрь",
     "Октябрь",
     "Ноябрь",
-    "Декабрь",
   ];
 
-  const dayOfMonth = daysOfWeek[date.getDay() - 1];
-  const monthName = monthNames[date.getMonth() - 1];
-  const monthsName = months[date.getMonth() - 1];
+  const dayOfMonth = daysOfWeek[date.getDay()][0];
+  const monthName = monthNames[date.getMonth()];
+  const monthsName = months[date.getMonth()];
   const lastDayOfPreviousMonth = new Date(
     date.getFullYear(),
     date.getMonth() - 1,
@@ -51,7 +53,7 @@ const Calendar = ({ date }) => {
   );
   const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 0);
   let monthInfo = [];
-  let firstDayOfMonth = date.getDay() - 1;
+  let firstDayOfMonth = lastDayOfPreviousMonth.getDay();
 
   while (firstDayOfMonth > 0) {
     monthInfo.push({
@@ -135,27 +137,11 @@ const Calendar = ({ date }) => {
         </colgroup>
         <thead>
           <tr>
-            <th scope="col" title="Понедельник">
-              Пн
-            </th>
-            <th scope="col" title="Вторник">
-              Вт
-            </th>
-            <th scope="col" title="Среда">
-              Ср
-            </th>
-            <th scope="col" title="Четверг">
-              Чт
-            </th>
-            <th scope="col" title="Пятница">
-              Пт
-            </th>
-            <th scope="col" title="Суббота">
-              Сб
-            </th>
-            <th scope="col" title="Воскресенье">
-              Вс
-            </th>
+            {daysOfWeek.map((day, index) => (
+              <th key={index} scope="col" title={day[0]}>
+                {day[1]}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>{renderRows()}</tbody>
